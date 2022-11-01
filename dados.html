@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Practica 6 - Juego 7-11</title>
+
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="assets/css/bootstrap.css">
+
+    <link rel="stylesheet" href="assets/vendors/perfect-scrollbar/perfect-scrollbar.css">
+    <link rel="stylesheet" href="assets/vendors/bootstrap-icons/bootstrap-icons.css">
+    <link rel="stylesheet" href="assets/css/app.css">
+    <!-- <link rel="shortcut icon" href="assets/images/favicon.svg" type="image/x-icon"> -->
+</head>
+
+<body>
+    <div id="app">
+        <div id="sidebar" class="active">
+            <div class="sidebar-wrapper active">
+                <div class="sidebar-header">
+                    <div class="d-flex justify-content-between">
+                        <a>Sergio Troche | Practica 6</a>
+                        <div class="toggler">
+                            
+                            <a href="#" class="sidebar-hide d-xl-none d-block"><i class="bi bi-x bi-middle"></i></a>
+                        </div>
+                    </div>
+                </div>
+                <div class="sidebar-menu">
+                    <ul class="menu">
+                        <li class="sidebar-title">Menu</li>
+
+                        <li class="sidebar-item  ">
+                            <a href="dados.html" class='sidebar-link'>
+                                <i class="bi bi-grid-fill"></i>
+                                <span>Lanzamiento Dados</span>
+                            </a>
+                        </li>
+                        <li class="sidebar-item  ">
+                            <a href="simul8.html" class='sidebar-link'>
+                                <i class="bi bi-grid-fill"></i>
+                                <span>Simul8</span>
+                            </a>
+                        </li>                      
+
+                    </ul>
+                </div>
+                <button class="sidebar-toggler btn x"><i data-feather="x"></i></button>
+            </div>
+        </div>
+        <div id="main">
+            <header class="mb-3">
+                <a href="#" class="burger-btn d-block d-xl-none">
+                    <i class="bi bi-justify fs-3"></i>
+                </a>
+            </header>
+
+            <div class="page-heading">
+                <div class="page-title">
+                    <div class="row">
+                        <div class="col-12 col-md-6 order-md-1 order-last">
+                            <h3>Lanzamiento de Dados</h3>
+                            <!-- <p class="text-subtitle text-muted">Multiple form layout you can use</p> -->
+                        </div>
+                        
+                    </div>
+                </div>
+
+                
+                <!-- Basic Horizontal form layout section start -->
+                <section id="basic-horizontal-layouts">
+                    <div class="row match-height">
+                        <div class="col-md-6 col-12">
+                            <div class="card">
+                                <div class="card-content">
+                                    <div class="card-body">
+                                        <form class="form form-horizontal">
+                                            <div class="form-body">
+                                                <div class="row">
+                                                    <div class="col-md-8"><h4 class="card-title">Numero de simulaciones</h4></div>
+                                            
+                                                <div class="col-md-8">
+                                                    <input type="number" id="id-nmsimul" class="form-control"
+                                                        name="id-nmsimul" placeholder="Numero de Simulaciones">
+                                                </div></div>
+                                                
+                                                <div class="col-md-8"><h4 class="card-title">Parametros de la simulacion</h4></div>
+                                                
+                                                <div class="row">
+                                                    <div class="col-md-4">
+                                                        <label>Numero de Juegos (Juego)</label>
+                                                    </div>
+                                                    <div class="col-md-8 form-group">
+                                                        <input type="number" id="id-nmj" class="form-control"
+                                                            name="nmj" placeholder="Numero de Juegos (Juego)">
+                                                    </div>
+                                                    <div class="col-md-4">
+                                                        <label>Costo del Juego</label>
+                                                    </div>
+                                                    <div class="col-md-8 form-group">
+                                                        <input type="number" id="id-cjue" class="form-control"
+                                                            name="cjue" placeholder="Costo del Juego">
+                                                    </div>
+                                                    <div class="col-md-4">
+                                                        <label>Ganancia del Jugador</label>
+                                                    </div>
+                                                    <div class="col-md-8 form-group">
+                                                        <input type="number" id="id-gjug" class="form-control"
+                                                            name="gjug" placeholder="Ganancia del Jugador">
+                                                    </div>
+                                                    <div class="col-sm-12 d-flex justify-content-end">
+                                                        <!-- <button class="myButton"  onclick="cargarDatos()">Generar</button> -->
+                                                        <button type="button" onclick="cargarDatos()"
+                                                            class="btn btn-primary me-1 mb-1">SIMULAR</button>
+                                                        <button type="reset"
+                                                            class="btn btn-light-secondary me-1 mb-1">LIMPIAR</button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="card">
+                                <div class="card-header">
+                                    <h4>PROMEDIO DE RESULTADOS</h4>
+                                </div>
+                                <div class="card-body">
+                                    <label>GNETA - Ganancia Neta total de todas las simulaciones (Casa)</label> <br>
+                                    <label id="texto_nav1"></label> <br>
+                                    <label>NJUEC - Numero de Juegos Ganados en promedio (Casa)</label> <br>
+                                    <label id="texto_nav2"></label> <br>
+                                    <label>PJUEC(%) Porcentaje total de juegos ganados de las simulaciones</label> <br>
+                                    <label id="texto_nav3"></label> <br>
+                                    <!-- <div class="table-responsive" >
+                                        <table class="table mb-0" id="t02">
+                                            <thead>
+                                                <tr>
+                                                    <th scope="col">GNETA - Ganancia Neta (Casa)</th>
+                                                    <th scope="col">NJUEC - Numero de Juegos Ganados (Casa)</th>
+                                                    <th scope="col">PJUEC(%)</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                
+                                            </tbody>
+                                        </table>
+                                    </div> -->
+                                    
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6 col-12">
+
+                            <div class="row" id="table-responsive">
+                                <div class="col-12">
+                                    <div class="card">
+                                        <div class="card-header">
+                                            <h4 class="card-title">RESULTADOS SIMULACIONES</h4>
+                                        </div>
+                                        <div class="card-content">                                            
+                                            <!-- table responsive -->
+                                            <div class="table-responsive" >
+                                                <table class="table mb-0" id="t01">
+                                                    <thead>
+                                                        <tr>
+                                                            <th scope="col">NSIM</th>
+                                                            <th scope="col">Ganancia neta (Bs)</th>
+                                                            <th scope="col">Juegos que gana la casa(Juego)</th>
+                                                            <th scope="col">Porcentaje victoria casa(%)</th>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                        
+                                                    </tbody>
+                                                </table>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+                <!-- // Basic Horizontal form layout section end -->
+
+                <div class="col-12 col-xl-8">
+                    
+                </div>
+
+            <footer>
+                <div class="footer clearfix mb-0 text-muted">
+                    <div class="float-start">
+                        <p>2022 &copy; UCB-SIS</p>
+                    </div>
+                </div>
+            </footer>
+        </div>
+    </div>
+    <script src="assets/vendors/perfect-scrollbar/perfect-scrollbar.min.js"></script>
+    <script src="assets/js/bootstrap.bundle.min.js"></script>
+    <script src="dados.js"></script>
+    <script src="assets/js/main.js"></script>
+</body>
+
+</html>
